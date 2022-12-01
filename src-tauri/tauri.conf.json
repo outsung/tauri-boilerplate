@@ -55,11 +55,14 @@
     },
     "windows": [
       {
+        "label": "updater",
+        "url": "updater",
+        "height": 300,
+        "width": 300,
         "fullscreen": false,
-        "height": 600,
-        "resizable": true,
-        "title": "tauri-boilerplate",
-        "width": 800
+        "resizable": false,
+        "title": "",
+        "titleBarStyle": "Overlay"
       }
     ]
   }
