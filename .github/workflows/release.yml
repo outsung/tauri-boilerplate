@@ -27,7 +27,7 @@ jobs:
           toolchain: stable
 
       - name: Set TAURI_PRIVATE_KEY
-        run: echo "TAURI_PRIVATE_KEY=${ secrets.TAURI_PRIVATE_KEY }" >> $GITHUB_ENV
+        run: echo "TAURI_PRIVATE_KEY=${{ secrets.TAURI_PRIVATE_KEY }}" >> $GITHUB_ENV
 
       - name: Install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
