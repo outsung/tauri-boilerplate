@@ -55,6 +55,7 @@ impl<R: Runtime> WindowExt for Window<R> {
 fn main() {
     tauri::Builder::default()
         .setup(|app| {
+            #[cfg(target_os = "macos")]
             let win = app.get_window("updater").unwrap();
             win.set_transparent_titlebar(true,true);
             Ok(())
