@@ -57,7 +57,9 @@ fn main() {
         .setup(|app| {
             let win = app.get_window("updater").unwrap();
             #[cfg(target_os = "macos")]
-            win.set_transparent_titlebar(true,true);
+            {
+              win.set_transparent_titlebar(true, true);
+            }
             Ok(())
         })
         .run(tauri::generate_context!())
