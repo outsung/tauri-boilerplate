@@ -1,0 +1,38 @@
+name: update-dev
+on:
+  push:
+    branches:
+      - dev
+      - "feature/**"
+      - "fix/**"
+
+concurrency:
+  group: ${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  update-dev:
+    if: ${{ !contains(github.event.head_commit.message, '[ci skip]') }}
+
+    name: update-dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repository
+        uses: actions/checkout@v3
+
+      - name: A) 🏗 Get version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+
+      - name: B) 🔥 Add tag for release
+        continue-on-error: true
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/v${{ steps.package-version.outputs.current-version }}',
+              sha: context.sha
+            })

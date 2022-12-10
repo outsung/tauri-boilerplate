@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "tauri-boilerplate",
-    "version": "0.0.0"
+    "version": "0.0.1"
   },
   "tauri": {
     "allowlist": {
@@ -29,7 +29,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "outsung.tauri.boilerplate",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -51,7 +51,12 @@
       "csp": null
     },
     "updater": {
-      "active": false
+      "active": true,
+      "endpoints": [
+        "https://tauri-update-server-iota.vercel.app/api/tauri/tauri-boilerplate/{{target}}/{{current_version}}"
+      ],
+      "dialog": false,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEExODNDOTg1QUU0NDIyMEQKUldRTklrU3VoY21Eb2ZqeHdWS29RWWlvOGw2b0Zid2FnenJ2aDkwU1hkdXU1ZjdoUWZ6UnIzRVYK"
     },
     "windows": [
       {
