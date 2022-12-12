@@ -8,8 +8,7 @@ export async function makeWindow(url: string, label: string) {
 
   const window = await import("@tauri-apps/api/window");
   const WebviewWindow = window.WebviewWindow;
-
-  const webview = new WebviewWindow(label, { url });
+  const webview = new WebviewWindow(label, { url, width: 1200, height: 780 });
 
   // since the webview window is created asynchronously,
   // Tauri emits the `tauri://created` and `tauri://error` to notify you of the creation response
